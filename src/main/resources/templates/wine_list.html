@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="https://www.thymeleaf.org">
+<head>
+	<th:block th:replace="~{fragment/basic_template :: head_entries}"/>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style>
+		.title {
+			color: #6b41b6;
+			font-size: 16px;
+			font-weight: 600;
+		}
+
+	</style>
+
+</head>
+<body>
+	<header th:replace="~{fragment/basic_template :: header}"/>
+	<a href="/create" class="btn btn-outline-primary btn-sm">NEW</a>
+	<!-- <a th:href="@{/create}" class="btn btn-outline-primary btn-sm">NEW</a>-->
+
+
+	<table class="table table-sm table-hover">
+		<thead class="table-light">
+		<tr>
+			<th></th>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Region</th>
+			<th>Jahr</th>
+			<th style="padding-left: 2rem">Price</th>
+			<!--<th style="padding-left: 2rem">Kurzbeschreibung</th>-->
+		</tr>
+		</thead>
+
+		<tbody>
+		<tr th:each="wine : ${wineList}" th:object="${wine}" th:onclick="'showDetails('+ ${wine.idWine}+')'">
+			<td>
+				<!--<img th:src="@{'images/small/' +*{getImageFilename()}}"/>-->
+				<img th:src="@{'images/small/'+*{getImageFilename()}}"/>
+			</td>
+			<td th:text="*{idWine}"/>
+			<td>
+				<h6 th:text="*{name}"/>
+				<p th:text="*{shortDescription}"/>
+			</td>
+			<td th:text="*{region}"/>
+			<td th:text="*{vintage}"/>
+			<!--<td th:text="*{#numbers.formatCurrency(price)}" class="text-end"/>-->
+			<td th:text="*{#numbers.formatDecimal(price,0,'POINT', 2,'COMMA') + ' €'}" class="text-end" style="padding-left: 2rem"/>
+			<!--<td th:text="*{shortDescription}" style="padding-left: 2rem"/>-->
+
+		</tbody>
+		</tr>
+
+	</table>
+	<!--<div class="btn-con">
+		<button class="btn-1">Submit</button>
+		<button class="btn-2">Delate</button>
+		<button class="btn-3">Update</button>
+	</div> -->
+
+
+
+</body>
+</html>

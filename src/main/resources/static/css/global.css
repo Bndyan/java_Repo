@@ -1,0 +1,21 @@
+body{
+
+    margin: 0.5em 3em 0 3em;
+}
+.st{
+    color: coral;
+}
+.navbar{
+    display: flex;
+}
+.bg{
+    background-color: #6b41b6;
+    color: #6b41b6;
+}
+button{
+    background-color: #6b41b6;
+    border: none;
+    border-radius: 4rem;
+    color: white;
+
+}
